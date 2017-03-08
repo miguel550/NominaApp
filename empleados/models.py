@@ -7,4 +7,4 @@ class Empleado(models.Model):
     segundo_nombre = models.TextField(max_length=150)
     primer_apellido = models.TextField(max_length=150)
     segundo_apellido = models.TextField(max_length=150)
-
+    salario = models.DecimalField()
