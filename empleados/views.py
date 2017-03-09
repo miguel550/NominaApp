@@ -1,18 +1,14 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, FormView
 from .models import Empleado
+from .forms import EmpleadoForm
 # Create your views here.
 
 
-class CrearEmpleado(CreateView):
-    model = Empleado
-    fields = ['cedula',
-              'primer_nombre',
-              'segundo_nombre',
-              'primer_apellido',
-              'segundo_apellido',
-              'salario']
+class CrearEmpleado(FormView):
+    form_class = EmpleadoForm
+    template_name = 'empleados/empleado_form.html'
     success_url = reverse_lazy('lista-empleados')
 
 

@@ -1,5 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <td>Cedula</td><td>{{ empleado.cedula }}</td>
+            </tr>
+            <tr>
+                <td>Primer nombre</td><td>{{ empleado.primer_nombre }}</td>
+            </tr>            <tr>
+                <td>Segundo nombre</td><td>{{ empleado.segundo_nombre }}</td>
+            </tr>            <tr>
+                <td>Primer apellido</td><td>{{ empleado.primer_apellido }}</td>
+            </tr>            <tr>
+                <td>Segundo apellido</td><td>{{ empleado.segundo_apellido }}</td>
+            </tr>            <tr>
+                <td>Salario</td><td>{{ empleado.salario }}</td>
+            </tr>
+        </tbody>
+    </table>
 {% endblock %}
