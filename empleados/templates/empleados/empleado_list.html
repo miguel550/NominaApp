@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Empleados <a href="create_empleado/" class="btn btn-default">Agregar empleado a nomina</a></h2>
+    <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Cedula</th>
+            <th>Primer nombre</th>
+            <th>Segundo nombre</th>
+            <th>Primer apellido</th>
+            <th>Segundo apellido</th>
+            <th>Salario</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for empleado in all_empleados %}
+            <tr>
+            <td>{{ empleado.cedula }}</td>
+            <td>{{ empleado.primer_nombre }}</td>
+            <td>{{ empleado.segundo_nombre }}</td>
+            <td>{{ empleado.primer_apellido }}</td>
+            <td>{{ empleado.segundo_apellido }}</td>
+            <td>{{ empleado.salario }}</td>
+            <td><a href="empleados/{{ empleado.pk }}/">Ver</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+
+    </table>
+{% endblock %}

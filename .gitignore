@@ -6,6 +6,9 @@
 *.egg-info
 *.pot
 *.py[co]
+*.ipynb
+*.sqlite3
+.ipynb_checkpoints
 .tox/
 __pycache__
 MANIFEST
@@ -18,3 +21,4 @@ tests/.coverage
 build/
 tests/report/
 .idea/
+
