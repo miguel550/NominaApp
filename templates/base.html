@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,7 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-2">
-                <img src="https://www.designmantic.com/create_thumb?id=15933&company=Nominapp&slogan=" width="90%" height="90%">
+                <img src="{% static 'logo.png' %}" width="90%" height="90%">
                 <ul class="nav nav-pills nav-stacked">
                     {% block menu %}
                   <li role="presentation"><a href="/">Home</a></li>

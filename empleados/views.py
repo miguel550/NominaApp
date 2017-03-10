@@ -11,6 +11,10 @@ class CrearEmpleado(FormView):
     template_name = 'empleados/empleado_form.html'
     success_url = reverse_lazy('lista-empleados')
 
+    def form_valid(self, form):
+        Empleado(**form.cleaned_data).save()
+        return super(CrearEmpleado, self).form_valid(form)
+
 
 class ListaEmpleados(ListView):
     model = Empleado

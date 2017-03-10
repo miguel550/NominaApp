@@ -19,7 +19,9 @@ class EmpleadoForm(forms.Form):
         cedula = cleaned_data.get('cedula')
         salario = cleaned_data.get('salario')
         if cedula:
-            if not is_luhn_valid(cedula):
+            if not is_luhn_valid(cedula) or '0'*len(cedula) == cedula:
                 self.add_error('cedula', 'Por favor, introduzca una cedula valida.')
         if salario <= 0:
             self.add_error('salario', 'El salario no puede ser menor o igual que 0.')
+
+        return cleaned_data
