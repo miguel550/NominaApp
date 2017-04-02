@@ -1,0 +1,1 @@
+web: gunicorn NominaApp.wsgi --log-file -

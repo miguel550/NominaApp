@@ -1,16 +1,15 @@
 from django.db import models
 from empleados.models import Empleado
 
-# Create your models here.
-
 
 class Tipo(models.Model):
     tipo = models.CharField(max_length=5, choices=(
         ('IN', 'Ingreso'),
-        ('DE','Deduccion'),
+        ('DE', 'Deduccion'),
     ))
     nombre = models.CharField(max_length=150)
     depende_salario = models.BooleanField()
+    valor = models.DecimalField(max_digits=8, decimal_places=2)
     activo = models.BooleanField()
 
 
