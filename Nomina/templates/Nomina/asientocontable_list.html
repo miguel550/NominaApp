@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Asientos contables</h2>
+    <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descripcion</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for asiento in all_asientos %}
+            <tr>
+            <td>{{ asiento.id_db }}</td>
+            <td>{{ asiento.descripcion }}</td>
+            <td>{{ asiento.fecha }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+
+    </table>
+{% endblock %}

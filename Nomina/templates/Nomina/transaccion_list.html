@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Transacciones</h2>
+    <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Cedula</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Tipo Transaccion</th>
+            <th>Tipo</th>
+            <th>Monto</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for trans in all_trans %}
+            <tr>
+            <td>{{ trans.pago.empleado.cedula }}</td>
+            <td>{{ trans.pago.empleado.primer_nombre }}</td>
+            <td>{{ trans.pago.empleado.primer_apellido }}</td>
+            <td>{{ trans.tipo_trans }}</td>
+            <td>{{ trans.tipo.get_tipo_display }}</td>
+            <td>{{ trans.monto }}</td>
+            <td>{{ trans.pago.fecha }}</td>
+            <td>{{ trans.estado }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+
+    </table>
+{% endblock %}

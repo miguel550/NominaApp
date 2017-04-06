@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form id="form">
+        {% csrf_token %}
+        <h2>Preview Pagos <input type="submit" class="btn btn-default" value="Efectuar pago de nomina" /></h2>
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Cedula</th>
+                <th>Primer nombre</th>
+                <th>Primer apellido</th>
+                <th>Salario</th>
+                <th>Tipos de deducciones e ingresos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for empleado in all_empleados %}
+                <tr>
+                <input type="hidden" value="{{ empleado.pk }}" class="pk" />
+                <td>{{ empleado.cedula }}</td>
+                <td>{{ empleado.primer_nombre }}</td>
+                <td>{{ empleado.primer_apellido }}</td>
+                <td>{{ empleado.salario }}</td>
+                <td><ul>
+                    {% for tipo in all_tipos %}
+                    <li>
+                        <input type="checkbox" class="{{ tipo.tipo }}" {% if tipo.defecto %} checked {% endif %} /> {{ tipo.nombre }}
+                    </li>
+                    {% empty %}
+                        <li>
+                        No hay tipos de deducciones o ingresos.
+                        </li>
+                    {% endfor %}
+
+
+                </ul></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+        </table>
+    </form>
+
+    <script>
+        $('#form').submit(function(e){
+            e.preventDefault();
+            var rows = $('tbody tr');
+            var payload = {};
+            //payload.csrfmiddlewaretoken = $('#form > input').val();
+             payload.data = [];
+            for(var i=0;i < rows.length;i++){
+                var data = {};
+                var row = $(rows[i]);
+                data.empleado_pk = row.children('input.pk').val();
+                data.tipos = [];
+                var tipos = row.find('ul input');
+                for(var ii=0;ii<tipos.length;ii++){
+                    var tipo = {nombre: $(tipos[ii]).parent().text().trim(),
+                    use: tipos[ii].checked};
+                    data.tipos.push(tipo);
+                }
+                payload.data.push(data);
+            }
+            console.log(payload);
+            $.post('pagar/', JSON.stringify(payload), function(data_ret){
+                console.log(data_ret);
+                toastr.success('Contabilidad', data_ret.descripcion)
+            });
+        });
+    </script>
+{% endblock %}

@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from empleados.views import ListaEmpleados, EmpleadoParticular, CrearEmpleado
-from Nomina.views import ListaTipo, CrearTipo
+from Nomina.views import ListaTipo, CrearTipo, PreviewPagos, ListaTransacciones, pagar, ListaAsientos
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -24,5 +24,9 @@ urlpatterns = [
     url(r'^create_empleado/$', CrearEmpleado.as_view()),
     url(r'^tipos/$', ListaTipo.as_view(), name='lista-tipos'),
     url(r'^tipos/create_tipo/$', CrearTipo.as_view()),
+    url(r'^preview_pago/$', PreviewPagos.as_view()),
+    url(r'^preview_pago/pagar/$', pagar),
+    url(r'^transacciones/$', ListaTransacciones.as_view()),
+    url(r'^asientos/$', ListaAsientos.as_view()),
     url(r'^$', ListaEmpleados.as_view(), name='lista-empleados'),
 ]

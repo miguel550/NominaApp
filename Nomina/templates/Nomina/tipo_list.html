@@ -8,8 +8,10 @@
             <th>Tipo</th>
             <th>Nombre</th>
             <th>Depende de salario</th>
+            <th>Monto</th>
+            <th>Porcentaje</th>
             <th>Activo</th>
-            <th>Acciones</th>
+            <!--<th>Acciones</th>-->
         </tr>
     </thead>
     <tbody>
@@ -18,8 +20,10 @@
             <td>{{ tipo.get_tipo_display }}</td>
             <td>{{ tipo.nombre }}</td>
             <td>{{ tipo.depende_salario }}</td>
+            <td>{{ tipo.monto }}</td>
+            <td>{{ tipo.porcentaje }}</td>
             <td>{{ tipo.activo }}</td>
-            <td><a href="tipos/{{ tipo.pk }}/">Ver</a></td>
+            <!--<td><a href="{{ tipo.pk }}/">Ver</a></td>-->
             </tr>
         {% endfor %}
     </tbody>
